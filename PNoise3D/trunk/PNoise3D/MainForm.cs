@@ -98,7 +98,7 @@ namespace PNoise3D
 
         private void btnAbout_Click(object sender, EventArgs e)
         {
-            AboutForm aboutForm = new AboutForm();
+            AboutFrm aboutForm = new AboutFrm();
             aboutForm.ShowDialog();
         }
 

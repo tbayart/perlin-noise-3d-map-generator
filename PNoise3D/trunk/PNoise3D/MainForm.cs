@@ -32,7 +32,6 @@ namespace PNoise3D
 
         public MainForm()
         {
-
             InitializeComponent();
             
             GetComboBoxColors();
@@ -44,7 +43,7 @@ namespace PNoise3D
 
         #region Events -----------------------------------------------------------------------------------
         
-        private void button1_Click(object sender, EventArgs e)
+        private void btnGenerate_Click(object sender, EventArgs e)
         {
             SEED = Convert.ToInt32(txtSeed.Text);
 

@@ -60,13 +60,6 @@ namespace PNoise3D.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap _155x60_AldoGiese {
-            get {
-                object obj = ResourceManager.GetObject("155x60 AldoGiese", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
         internal static System.Drawing.Bitmap _155x60_AldoGiese1 {
             get {
                 object obj = ResourceManager.GetObject("155x60 AldoGiese1", resourceCulture);

@@ -351,9 +351,11 @@ namespace PNoise3D
             this.btnSave.TabIndex = 29;
             this.btnSave.Text = "Speichern";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // saveFileDialog1
             // 
+            this.saveFileDialog1.CheckFileExists = true;
             this.saveFileDialog1.Filter = "\"Bitmap File|*.bmp\"";
             // 
             // backgroundWorker1
@@ -415,7 +417,7 @@ namespace PNoise3D
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -446,7 +448,7 @@ namespace PNoise3D
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnGenerate);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.ShowIcon = false;
             this.Text = "Perlin Noise3D Map Generator";
             this.groupBox1.ResumeLayout(false);

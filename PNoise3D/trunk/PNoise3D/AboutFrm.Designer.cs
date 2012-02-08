@@ -49,7 +49,6 @@ namespace PNoise3D
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label2 = new System.Windows.Forms.Label();
             this.okButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.txtLicense = new System.Windows.Forms.TextBox();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
@@ -85,22 +84,14 @@ namespace PNoise3D
             this.okButton.UseVisualStyleBackColor = true;
             this.okButton.Click += new System.EventHandler(this.OkButtonClick);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "GNU GPL v3 License";
-            // 
             // txtLicense
             // 
-            this.txtLicense.Location = new System.Drawing.Point(12, 25);
+            this.txtLicense.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtLicense.Location = new System.Drawing.Point(12, 12);
             this.txtLicense.Multiline = true;
             this.txtLicense.Name = "txtLicense";
             this.txtLicense.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtLicense.Size = new System.Drawing.Size(411, 217);
+            this.txtLicense.Size = new System.Drawing.Size(411, 230);
             this.txtLicense.TabIndex = 5;
             this.txtLicense.Text = resources.GetString("txtLicense.Text");
             // 
@@ -136,11 +127,10 @@ namespace PNoise3D
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.okButton);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtLicense);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "AboutFrm";
-            this.Text = "AboutFrm";
+            this.Text = "GNU GPL v3 License Text";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -151,7 +141,6 @@ namespace PNoise3D
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button okButton;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtLicense;
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.LinkLabel linkLabel3;

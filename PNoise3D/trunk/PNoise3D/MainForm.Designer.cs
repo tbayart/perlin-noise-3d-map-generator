@@ -106,7 +106,7 @@ namespace PNoise3D
             this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "Beenden";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.Click += new System.EventHandler(this.BtnCancelClick);
             // 
             // txtSeed
             // 
@@ -364,7 +364,7 @@ namespace PNoise3D
             this.btnSave.TabIndex = 29;
             this.btnSave.Text = "Speichern";
             this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnSave.Click += new System.EventHandler(this.BtnSaveClick);
             // 
             // saveFileDialog1
             // 
@@ -374,8 +374,8 @@ namespace PNoise3D
             // backgroundWorker1
             // 
             this.backgroundWorker1.WorkerSupportsCancellation = true;
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorker1DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackgroundWorker1RunWorkerCompleted);
             // 
             // btnAbout
             // 
@@ -386,7 +386,7 @@ namespace PNoise3D
             this.btnAbout.TabIndex = 30;
             this.btnAbout.Text = "About";
             this.btnAbout.UseVisualStyleBackColor = true;
-            this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
+            this.btnAbout.Click += new System.EventHandler(this.BtnAboutClick);
             // 
             // btnFullscreen
             // 
@@ -397,7 +397,7 @@ namespace PNoise3D
             this.btnFullscreen.TabIndex = 31;
             this.btnFullscreen.Text = "Fullscreen";
             this.btnFullscreen.UseVisualStyleBackColor = true;
-            this.btnFullscreen.Click += new System.EventHandler(this.btnFullscreen_Click);
+            this.btnFullscreen.Click += new System.EventHandler(this.BtnFullscreenClick);
             // 
             // label10
             // 

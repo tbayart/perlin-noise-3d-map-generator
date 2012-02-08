@@ -46,5 +46,17 @@ namespace PNoise3D.Properties {
                 this["minimalView"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string batchOutputDir {
+            get {
+                return ((string)(this["batchOutputDir"]));
+            }
+            set {
+                this["batchOutputDir"] = value;
+            }
+        }
     }
 }

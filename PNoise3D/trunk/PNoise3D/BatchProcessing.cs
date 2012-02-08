@@ -58,10 +58,74 @@ namespace PNoise3D
 
         #endregion --------------------------------------------------------------------------------
 
-       
+        #region Constructors ----------------------------------------------------------------------
+
         public BatchProcessing()
         {
             InitializeComponent();
         }
+
+        #endregion --------------------------------------------------------------------------------
+
+        #region Methods ---------------------------------------------------------------------------
+
+        /// <summary>
+        /// Invoke if required, for thread safe gui changes
+        /// </summary>
+        /// <param name="target">Target control</param>
+        /// <param name="methodToInvoke">Delegate Method to Invoke</param>
+        private static void InvokeIfRequired(Control target, Delegate methodToInvoke)
+        {
+            /* Mit Hilfe von InvokeRequired wird geprüft ob der Aufruf direkt an die UI gehen kann oder
+             * ob ein Invokeing hier von Nöten ist
+             */
+            if (target.InvokeRequired)
+            {
+                // Das Control muss per Invoke geändert werden, weil der aufruf aus einem Backgroundthread kommt
+                target.Invoke(methodToInvoke);
+            }
+            else
+            {
+                // Die Änderung an der UI kann direkt aufgerufen werden.
+                methodToInvoke.DynamicInvoke();
+
+
+            }
+        }
+
+        #endregion --------------------------------------------------------------------------------
+
+        #region Events ----------------------------------------------------------------------------
+
+        private void txtA_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ("1234567890,\b".IndexOf(e.KeyChar.ToString()) >= 0) return;
+
+            e.Handled = true;
+            MessageBox.Show(@"This field only accept numbers!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+        private void txtR_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ("1234567890,\b".IndexOf(e.KeyChar.ToString()) >= 0) return;
+
+            e.Handled = true;
+            MessageBox.Show(@"This field only accept numbers!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+        private void txtG_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ("1234567890,\b".IndexOf(e.KeyChar.ToString()) >= 0) return;
+
+            e.Handled = true;
+            MessageBox.Show(@"This field only accept numbers!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+        private void txtB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ("1234567890,\b".IndexOf(e.KeyChar.ToString()) >= 0) return;
+
+            e.Handled = true;
+            MessageBox.Show(@"This field only accept numbers!", @"Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion --------------------------------------------------------------------------------
     }
 }

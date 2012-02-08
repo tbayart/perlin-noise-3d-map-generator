@@ -1,16 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace PNoise3D
 {
     public class PerlinNoise3D
     {
+        #region Member Data------------------------------------------------------------------------
+
         Int32 seed;
         Int32 noiseDimension;
         Int32 noiseHeight;
         Single[, ,] noise;
+
+        #endregion --------------------------------------------------------------------------------
+
+        #region Constructors ----------------------------------------------------------------------
 
         public PerlinNoise3D(Int32 Seed) : this(Seed, 1024, 128) { }
 
@@ -22,6 +25,10 @@ namespace PNoise3D
 
             generateNoise();
         }
+
+        #endregion --------------------------------------------------------------------------------
+
+        #region Methods ---------------------------------------------------------------------------
 
         private void generateNoise()
         {
@@ -88,5 +95,7 @@ namespace PNoise3D
 
             return value;
         }
+
+        #endregion ---------------------------------------------------------------------------------
     }
 }

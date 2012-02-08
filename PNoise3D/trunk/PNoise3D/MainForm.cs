@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace PNoise3D
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         #region Member Data ------------------------------------------------------------------------------
         private Bitmap bmp;
@@ -29,7 +29,7 @@ namespace PNoise3D
 
         #region Contructors ------------------------------------------------------------------------------
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             

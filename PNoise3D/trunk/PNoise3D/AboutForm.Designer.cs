@@ -90,8 +90,7 @@
             this.textBoxDescription.Size = new System.Drawing.Size(271, 126);
             this.textBoxDescription.TabIndex = 23;
             this.textBoxDescription.TabStop = false;
-            this.textBoxDescription.Text = "Weitere Infos und Updates findet ihr auf meiner Internetseite!\r\nDies war ein klei" +
-                "nes Projekt um meine langeweile zu bekämpfen :D";
+            this.textBoxDescription.Text = resources.GetString("textBoxDescription.Text");
             // 
             // okButton
             // 

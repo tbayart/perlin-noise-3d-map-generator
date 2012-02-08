@@ -6,9 +6,11 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
+
 
 namespace PNoise3D
 {
@@ -31,10 +33,12 @@ namespace PNoise3D
 
         public MainForm()
         {
+
             InitializeComponent();
             
             GetComboBoxColors();
             SetRandomSeed();
+
         }
 
         #endregion ---------------------------------------------------------------------------------------
@@ -103,6 +107,14 @@ namespace PNoise3D
         private void btnFullscreen_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Maximized;
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if(saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                bmp.Save(saveFileDialog1.FileName);
+            }
         }
 
         #endregion ---------------------------------------------------------------------------------------
@@ -243,6 +255,8 @@ namespace PNoise3D
         }
 
         #endregion ---------------------------------------------------------------------------------------
+
+        
     }
 }
 

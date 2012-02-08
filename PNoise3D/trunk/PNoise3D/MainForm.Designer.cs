@@ -78,7 +78,6 @@ namespace PNoise3D
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.btnAbout = new System.Windows.Forms.Button();
             this.btnFullscreen = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
@@ -399,17 +398,9 @@ namespace PNoise3D
             this.btnFullscreen.UseVisualStyleBackColor = true;
             this.btnFullscreen.Click += new System.EventHandler(this.BtnFullscreenClick);
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(149, 200);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(76, 13);
-            this.label10.TabIndex = 33;
-            this.label10.Text = "Render Target";
-            // 
             // pictureBox2
             // 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.Image = global::PNoise3D.Properties.Resources._155x60_AldoGiese1;
             this.pictureBox2.Location = new System.Drawing.Point(374, 264);
             this.pictureBox2.Name = "pictureBox2";
@@ -435,7 +426,6 @@ namespace PNoise3D
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(542, 416);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.btnFullscreen);
             this.Controls.Add(this.btnAbout);
@@ -527,7 +517,6 @@ namespace PNoise3D
         private Button btnAbout;
         private Button btnFullscreen;
         private PictureBox pictureBox2;
-        private Label label10;
     }
 }
 

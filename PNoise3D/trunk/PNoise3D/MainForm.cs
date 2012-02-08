@@ -61,7 +61,6 @@ namespace PNoise3D
                                 MessageBoxIcon.Information);
             else
             {
-                label10.Visible = false;
                 btnCancel.Enabled = true;
 
 

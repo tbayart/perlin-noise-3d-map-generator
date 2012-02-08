@@ -45,6 +45,7 @@ namespace PNoise3D
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.btnGenerate = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.txtSeed = new System.Windows.Forms.TextBox();
@@ -80,6 +81,8 @@ namespace PNoise3D
             this.btnFullscreen = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.chkMinimalview = new System.Windows.Forms.CheckBox();
+            this.btnBatch = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -92,7 +95,7 @@ namespace PNoise3D
             this.btnGenerate.Name = "btnGenerate";
             this.btnGenerate.Size = new System.Drawing.Size(75, 21);
             this.btnGenerate.TabIndex = 0;
-            this.btnGenerate.Text = "Generieren";
+            this.btnGenerate.Text = "Generate";
             this.btnGenerate.UseVisualStyleBackColor = true;
             this.btnGenerate.Click += new System.EventHandler(this.BtnGenerateClick);
             // 
@@ -103,7 +106,7 @@ namespace PNoise3D
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 21);
             this.btnCancel.TabIndex = 2;
-            this.btnCancel.Text = "Beenden";
+            this.btnCancel.Text = "Quit";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.BtnCancelClick);
             // 
@@ -140,7 +143,7 @@ namespace PNoise3D
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(371, 48);
+            this.label2.Location = new System.Drawing.Point(371, 50);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 13);
             this.label2.TabIndex = 6;
@@ -149,7 +152,7 @@ namespace PNoise3D
             // txtDimension
             // 
             this.txtDimension.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDimension.Location = new System.Drawing.Point(374, 64);
+            this.txtDimension.Location = new System.Drawing.Point(374, 66);
             this.txtDimension.Name = "txtDimension";
             this.txtDimension.Size = new System.Drawing.Size(75, 20);
             this.txtDimension.TabIndex = 7;
@@ -158,7 +161,7 @@ namespace PNoise3D
             // txtHeigth
             // 
             this.txtHeigth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtHeigth.Location = new System.Drawing.Point(455, 64);
+            this.txtHeigth.Location = new System.Drawing.Point(455, 66);
             this.txtHeigth.Name = "txtHeigth";
             this.txtHeigth.Size = new System.Drawing.Size(75, 20);
             this.txtHeigth.TabIndex = 8;
@@ -168,18 +171,18 @@ namespace PNoise3D
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(452, 49);
+            this.label3.Location = new System.Drawing.Point(452, 51);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(33, 13);
+            this.label3.Size = new System.Drawing.Size(38, 13);
             this.label3.TabIndex = 9;
-            this.label3.Text = "Höhe";
+            this.label3.Text = "Height";
             // 
             // cmbWatercolor
             // 
             this.cmbWatercolor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbWatercolor.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.cmbWatercolor.FormattingEnabled = true;
-            this.cmbWatercolor.Location = new System.Drawing.Point(374, 127);
+            this.cmbWatercolor.Location = new System.Drawing.Point(374, 116);
             this.cmbWatercolor.Name = "cmbWatercolor";
             this.cmbWatercolor.Size = new System.Drawing.Size(156, 21);
             this.cmbWatercolor.TabIndex = 10;
@@ -190,16 +193,16 @@ namespace PNoise3D
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(371, 104);
+            this.label4.Location = new System.Drawing.Point(371, 93);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 13);
+            this.label4.Size = new System.Drawing.Size(59, 13);
             this.label4.TabIndex = 11;
-            this.label4.Text = "Wasserfarbe";
+            this.label4.Text = "Watercolor";
             // 
             // txtAlpha
             // 
             this.txtAlpha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAlpha.Location = new System.Drawing.Point(495, 101);
+            this.txtAlpha.Location = new System.Drawing.Point(495, 90);
             this.txtAlpha.Name = "txtAlpha";
             this.txtAlpha.Size = new System.Drawing.Size(35, 20);
             this.txtAlpha.TabIndex = 12;
@@ -209,7 +212,7 @@ namespace PNoise3D
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(452, 104);
+            this.label5.Location = new System.Drawing.Point(452, 93);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(34, 13);
             this.label5.TabIndex = 13;
@@ -227,12 +230,12 @@ namespace PNoise3D
             this.groupBox1.Controls.Add(this.txtR);
             this.groupBox1.Controls.Add(this.txtA);
             this.groupBox1.Enabled = false;
-            this.groupBox1.Location = new System.Drawing.Point(374, 163);
+            this.groupBox1.Location = new System.Drawing.Point(374, 143);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(156, 63);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "  Eigene Farbe";
+            this.groupBox1.Text = "  Custom Color";
             // 
             // label9
             // 
@@ -302,7 +305,7 @@ namespace PNoise3D
             // 
             this.chkCustomColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkCustomColor.AutoSize = true;
-            this.chkCustomColor.Location = new System.Drawing.Point(374, 163);
+            this.chkCustomColor.Location = new System.Drawing.Point(374, 143);
             this.chkCustomColor.Name = "chkCustomColor";
             this.chkCustomColor.Size = new System.Drawing.Size(15, 14);
             this.chkCustomColor.TabIndex = 22;
@@ -313,7 +316,7 @@ namespace PNoise3D
             // 
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(371, 235);
+            this.label11.Location = new System.Drawing.Point(371, 209);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(51, 13);
             this.label11.TabIndex = 25;
@@ -323,7 +326,7 @@ namespace PNoise3D
             // 
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(371, 248);
+            this.label12.Location = new System.Drawing.Point(371, 222);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(90, 13);
             this.label12.TabIndex = 26;
@@ -332,7 +335,7 @@ namespace PNoise3D
             // lblxChunks
             // 
             this.lblxChunks.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblxChunks.Location = new System.Drawing.Point(455, 235);
+            this.lblxChunks.Location = new System.Drawing.Point(455, 209);
             this.lblxChunks.Name = "lblxChunks";
             this.lblxChunks.Size = new System.Drawing.Size(75, 13);
             this.lblxChunks.TabIndex = 27;
@@ -342,7 +345,7 @@ namespace PNoise3D
             // lblzChunks
             // 
             this.lblzChunks.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblzChunks.Location = new System.Drawing.Point(455, 248);
+            this.lblzChunks.Location = new System.Drawing.Point(455, 222);
             this.lblzChunks.Name = "lblzChunks";
             this.lblzChunks.Size = new System.Drawing.Size(75, 13);
             this.lblzChunks.TabIndex = 28;
@@ -361,14 +364,15 @@ namespace PNoise3D
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 21);
             this.btnSave.TabIndex = 29;
-            this.btnSave.Text = "Speichern";
+            this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.BtnSaveClick);
             // 
             // saveFileDialog1
             // 
-            this.saveFileDialog1.CheckFileExists = true;
-            this.saveFileDialog1.Filter = "\"Bitmap File|*.bmp\"";
+            this.saveFileDialog1.FileName = "output";
+            this.saveFileDialog1.Filter = "Bitmap File(*.png)|*.bmp | PNG Graphic(*.png) |*.png | Jpeg Graphic(*.jpeg)|*.jpe" +
+                "g";
             // 
             // backgroundWorker1
             // 
@@ -390,9 +394,9 @@ namespace PNoise3D
             // btnFullscreen
             // 
             this.btnFullscreen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFullscreen.Location = new System.Drawing.Point(374, 329);
+            this.btnFullscreen.Location = new System.Drawing.Point(455, 329);
             this.btnFullscreen.Name = "btnFullscreen";
-            this.btnFullscreen.Size = new System.Drawing.Size(156, 21);
+            this.btnFullscreen.Size = new System.Drawing.Size(75, 21);
             this.btnFullscreen.TabIndex = 31;
             this.btnFullscreen.Text = "Fullscreen";
             this.btnFullscreen.UseVisualStyleBackColor = true;
@@ -402,7 +406,7 @@ namespace PNoise3D
             // 
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.Image = global::PNoise3D.Properties.Resources._155x60_AldoGiese1;
-            this.pictureBox2.Location = new System.Drawing.Point(374, 264);
+            this.pictureBox2.Location = new System.Drawing.Point(374, 238);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(155, 60);
             this.pictureBox2.TabIndex = 32;
@@ -421,11 +425,37 @@ namespace PNoise3D
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
+            // chkMinimalview
+            // 
+            this.chkMinimalview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkMinimalview.AutoSize = true;
+            this.chkMinimalview.Checked = global::PNoise3D.Properties.Settings.Default.minimalView;
+            this.chkMinimalview.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::PNoise3D.Properties.Settings.Default, "minimalView", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.chkMinimalview.Location = new System.Drawing.Point(442, 306);
+            this.chkMinimalview.Name = "chkMinimalview";
+            this.chkMinimalview.Size = new System.Drawing.Size(87, 17);
+            this.chkMinimalview.TabIndex = 33;
+            this.chkMinimalview.Text = "Minimal View";
+            this.chkMinimalview.UseVisualStyleBackColor = true;
+            this.chkMinimalview.CheckedChanged += new System.EventHandler(this.chkMinimalview_CheckedChanged);
+            // 
+            // btnBatch
+            // 
+            this.btnBatch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBatch.Location = new System.Drawing.Point(374, 329);
+            this.btnBatch.Name = "btnBatch";
+            this.btnBatch.Size = new System.Drawing.Size(75, 21);
+            this.btnBatch.TabIndex = 34;
+            this.btnBatch.Text = "Batch";
+            this.btnBatch.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(542, 416);
+            this.Controls.Add(this.btnBatch);
+            this.Controls.Add(this.chkMinimalview);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.btnFullscreen);
             this.Controls.Add(this.btnAbout);
@@ -451,8 +481,8 @@ namespace PNoise3D
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnGenerate);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
-            this.ShowIcon = false;
             this.Text = "Perlin Noise3D Map Generator";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -517,6 +547,8 @@ namespace PNoise3D
         private Button btnAbout;
         private Button btnFullscreen;
         private PictureBox pictureBox2;
+        private CheckBox chkMinimalview;
+        private Button btnBatch;
     }
 }
 

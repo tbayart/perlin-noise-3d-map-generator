@@ -284,6 +284,71 @@ namespace PNoise3D
             btnSave.Enabled = true;
             btnGenerate.Enabled = true;
         }
+
+        private void txtDimension_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ("1234567890,\b".IndexOf(e.KeyChar.ToString()) >= 0) return;
+
+            e.Handled = true;
+            MessageBox.Show(@"This field only accept numbers!", @"Error!", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+        }
+        private void txtHeigth_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ("1234567890,\b".IndexOf(e.KeyChar.ToString()) >= 0) return;
+
+            e.Handled = true;
+            MessageBox.Show(@"This field only accept numbers!", @"Error!", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+        }
+        private void txtAlpha_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ("1234567890,\b".IndexOf(e.KeyChar.ToString()) >= 0) return;
+
+            e.Handled = true;
+            MessageBox.Show(@"This field only accept numbers!", @"Error!", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+        }
+        private void txtSeed_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ("1234567890,\b".IndexOf(e.KeyChar.ToString()) >= 0) return;
+
+            e.Handled = true;
+            MessageBox.Show(@"This field only accept numbers!", @"Error!", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+        }
+        private void txtA_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ("1234567890,\b".IndexOf(e.KeyChar.ToString()) >= 0) return;
+
+            e.Handled = true;
+            MessageBox.Show(@"This field only accept numbers!", @"Error!", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+        }
+        private void txtR_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ("1234567890,\b".IndexOf(e.KeyChar.ToString()) >= 0) return;
+
+            e.Handled = true;
+            MessageBox.Show(@"This field only accept numbers!", @"Error!", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+        }
+        private void txtG_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ("1234567890,\b".IndexOf(e.KeyChar.ToString()) >= 0) return;
+
+            e.Handled = true;
+            MessageBox.Show(@"This field only accept numbers!", @"Error!", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+        }
+        private void txtB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ("1234567890,\b".IndexOf(e.KeyChar.ToString()) >= 0) return;
+
+            e.Handled = true;
+            MessageBox.Show(@"This field only accept numbers!", @"Error!", MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+        }
         #endregion ---------------------------------------------------------------------------------------
 
         #region Methods ----------------------------------------------------------------------------------
@@ -337,6 +402,7 @@ namespace PNoise3D
         }
 
         #endregion ---------------------------------------------------------------------------------------
+
         
     }
 }

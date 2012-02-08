@@ -117,6 +117,7 @@ namespace PNoise3D
             this.txtSeed.Name = "txtSeed";
             this.txtSeed.Size = new System.Drawing.Size(88, 20);
             this.txtSeed.TabIndex = 3;
+            this.txtSeed.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSeed_KeyPress);
             // 
             // label1
             // 
@@ -157,6 +158,7 @@ namespace PNoise3D
             this.txtDimension.Size = new System.Drawing.Size(75, 20);
             this.txtDimension.TabIndex = 7;
             this.txtDimension.Text = "1024";
+            this.txtDimension.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDimension_KeyPress);
             // 
             // txtHeigth
             // 
@@ -166,6 +168,7 @@ namespace PNoise3D
             this.txtHeigth.Size = new System.Drawing.Size(75, 20);
             this.txtHeigth.TabIndex = 8;
             this.txtHeigth.Text = "128";
+            this.txtHeigth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHeigth_KeyPress);
             // 
             // label3
             // 
@@ -207,6 +210,7 @@ namespace PNoise3D
             this.txtAlpha.Size = new System.Drawing.Size(35, 20);
             this.txtAlpha.TabIndex = 12;
             this.txtAlpha.Text = "128";
+            this.txtAlpha.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAlpha_KeyPress);
             // 
             // label5
             // 
@@ -279,6 +283,7 @@ namespace PNoise3D
             this.txtB.Name = "txtB";
             this.txtB.Size = new System.Drawing.Size(27, 20);
             this.txtB.TabIndex = 18;
+            this.txtB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtB_KeyPress);
             // 
             // txtG
             // 
@@ -286,6 +291,7 @@ namespace PNoise3D
             this.txtG.Name = "txtG";
             this.txtG.Size = new System.Drawing.Size(27, 20);
             this.txtG.TabIndex = 17;
+            this.txtG.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtG_KeyPress);
             // 
             // txtR
             // 
@@ -293,6 +299,7 @@ namespace PNoise3D
             this.txtR.Name = "txtR";
             this.txtR.Size = new System.Drawing.Size(27, 20);
             this.txtR.TabIndex = 16;
+            this.txtR.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtR_KeyPress);
             // 
             // txtA
             // 
@@ -300,6 +307,7 @@ namespace PNoise3D
             this.txtA.Name = "txtA";
             this.txtA.Size = new System.Drawing.Size(27, 20);
             this.txtA.TabIndex = 15;
+            this.txtA.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtA_KeyPress);
             // 
             // chkCustomColor
             // 

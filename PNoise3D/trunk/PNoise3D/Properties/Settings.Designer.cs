@@ -34,5 +34,17 @@ namespace PNoise3D.Properties {
                 this["showLicense"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool minimalView {
+            get {
+                return ((bool)(this["minimalView"]));
+            }
+            set {
+                this["minimalView"] = value;
+            }
+        }
     }
 }

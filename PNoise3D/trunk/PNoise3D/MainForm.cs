@@ -25,16 +25,58 @@ namespace PNoise3D
     public partial class MainForm : Form
     {
         #region Member Data ------------------------------------------------------------------------------
-        private Bitmap _bmp;
-        private Int32 _seed, _dimension, _height;
 
+        /// <summary>
+        /// The Target Bitmap to Render
+        /// </summary>
+        private Bitmap _bmp;
+
+        /// <summary>
+        /// The Random Seed
+        /// </summary>
+        private Int32 _seed;
+
+        /// <summary>
+        /// Dimension
+        /// </summary>
+        private Int32 _dimension;
+
+        /// <summary>
+        /// World Height
+        /// </summary>
+        private Int32 _height;
+
+        /// <summary>
+        /// List of System Colors
+        /// </summary>
         private readonly List<Color> _colorList = new List<Color>();
+
+        /// <summary>
+        /// Single color that fill be used for fill in system colors
+        /// </summary>
         private Color _colors = Color.Empty;
+
+        /// <summary>
+        /// Random generator
+        /// </summary>
         private Random _rnd;
 
+
+        /// <summary>
+        /// All zChunks
+        /// </summary>
         private int _overallzChunks;
+
+        /// <summary>
+        /// If we use Custom colors?
+        /// </summary>
         private bool _useCustomColor;
+
+        /// <summary>
+        /// ARGB color values
+        /// </summary>
         private int _a, _r, _g, _b;
+
         #endregion ---------------------------------------------------------------------------------------
 
         #region Contructors ------------------------------------------------------------------------------
@@ -42,16 +84,54 @@ namespace PNoise3D
         public MainForm()
         {
             InitializeComponent();
-            
+            Size = Properties.Settings.Default.minimalView ? new Size(185, Size.Height) : new Size(548, Size.Height);
             GetComboBoxColors();
             SetRandomSeed();
-
         }
 
         #endregion ---------------------------------------------------------------------------------------
 
         #region Events -----------------------------------------------------------------------------------
-        
+
+        private void CmbWatercolorSelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtA.Text = _colorList[cmbWatercolor.SelectedIndex].A.ToString();
+            txtR.Text = _colorList[cmbWatercolor.SelectedIndex].R.ToString();
+            txtG.Text = _colorList[cmbWatercolor.SelectedIndex].G.ToString();
+            txtB.Text = _colorList[cmbWatercolor.SelectedIndex].B.ToString();
+
+        }
+        private void chkMinimalview_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.minimalView = chkMinimalview.Checked;
+            Properties.Settings.Default.Save();
+
+            Size = Properties.Settings.Default.minimalView ? new Size(185, Size.Height) : new Size(548, Size.Height);
+        }
+        private void ChkCustomColorCheckedChanged(object sender, EventArgs e)
+        {
+            groupBox1.Enabled = chkCustomColor.Checked;
+            _useCustomColor = chkCustomColor.Checked;
+        }
+
+        private void BtnSetRandomSeedClick(object sender, EventArgs e)
+        {
+            SetRandomSeed();
+        }
+        private void BtnFullscreenClick(object sender, EventArgs e)
+        {
+            if(WindowState == FormWindowState.Maximized)
+            {
+                btnFullscreen.Text = @"Fullscreen";
+                WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                btnFullscreen.Text = @"Normal Mode";
+                WindowState = FormWindowState.Maximized;
+            }
+            
+        }
         private void BtnGenerateClick(object sender, EventArgs e)
         {
             _seed = Convert.ToInt32(txtSeed.Text);
@@ -64,106 +144,42 @@ namespace PNoise3D
                 btnCancel.Enabled = true;
 
 
-                if (cmbWatercolor.SelectedIndex == 0) //Wenn keine Farbe ausgewählt, zufällig eine Wählen
-                    cmbWatercolor.SelectedIndex = _rnd.Next(cmbWatercolor.Items.Count);
+                if (!_useCustomColor)
+                {
+                    if (cmbWatercolor.SelectedIndex == 0) //Wenn keine Farbe ausgewählt, zufällig eine Wählen
+                        cmbWatercolor.SelectedIndex = _rnd.Next(cmbWatercolor.Items.Count);
+                    backgroundWorker1.RunWorkerAsync(cmbWatercolor.SelectedIndex);
+
+                }
                 else
                 {
-                    _a = txtA.Text != null ? Convert.ToInt32(txtA.Text) : 0;
-                    _r = txtR.Text != null ? Convert.ToInt32(txtR.Text) : 0;
-                    _g = txtG.Text != null ? Convert.ToInt32(txtG.Text) : 0;
-                    _b = txtB.Text != null ? Convert.ToInt32(txtB.Text) : 0;
+                    _a = string.IsNullOrWhiteSpace(txtA.Text) ? Convert.ToInt32(txtA.Text) : _rnd.Next(255);
+                    _r = string.IsNullOrWhiteSpace(txtR.Text) ? Convert.ToInt32(txtR.Text) : _rnd.Next(255);
+                    _g = string.IsNullOrWhiteSpace(txtG.Text) ? Convert.ToInt32(txtG.Text) : _rnd.Next(255);
+                    _b = string.IsNullOrWhiteSpace(txtB.Text) ? Convert.ToInt32(txtB.Text) : _rnd.Next(255);
+                    backgroundWorker1.RunWorkerAsync(cmbWatercolor.SelectedIndex);
                 }
 
-                backgroundWorker1.RunWorkerAsync(cmbWatercolor.SelectedIndex);
+                
             }
         }
-
-        private void BtnSetRandomSeedClick(object sender, EventArgs e)
-        {
-            SetRandomSeed();
-        }
-
-        private void ChkCustomColorCheckedChanged(object sender, EventArgs e)
-        {
-            groupBox1.Enabled = chkCustomColor.Checked;
-            _useCustomColor = chkCustomColor.Checked;
-        }
-
-        private void CmbWatercolorSelectedIndexChanged(object sender, EventArgs e)
-        {
-            txtA.Text = _colorList[cmbWatercolor.SelectedIndex].A.ToString();
-            txtR.Text = _colorList[cmbWatercolor.SelectedIndex].R.ToString();
-            txtG.Text = _colorList[cmbWatercolor.SelectedIndex].G.ToString();
-            txtB.Text = _colorList[cmbWatercolor.SelectedIndex].B.ToString();
-
-        }
-
         private void BtnCancelClick(object sender, EventArgs e)
         {
             backgroundWorker1.CancelAsync();
             Application.Exit();
         }
-
         private void BtnAboutClick(object sender, EventArgs e)
         {
             AboutFrm aboutForm = new AboutFrm();
             aboutForm.ShowDialog();
         }
-
-        private void BtnFullscreenClick(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Maximized;
-        }
-
         private void BtnSaveClick(object sender, EventArgs e)
         {
-            if(saveFileDialog1.ShowDialog() == DialogResult.OK)
-            {
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 _bmp.Save(saveFileDialog1.FileName);
-            }
         }
 
-        #endregion ---------------------------------------------------------------------------------------
-
-        #region Methods ----------------------------------------------------------------------------------
-
-        private void GetComboBoxColors()
-        {
-            var colorProperties = _colors.GetType().GetProperties(BindingFlags.Static | BindingFlags.Public);
-            var colors = colorProperties.Select(prop => (Color)prop.GetValue(null, null));
-
-            foreach (Color myColor in colors)
-            {
-                _colorList.Add(myColor);
-                cmbWatercolor.Items.Add(myColor.Name);
-            }
-        }
-
-        private void SetRandomSeed()
-        {
-            _rnd = new Random();
-            txtSeed.Text = _rnd.Next(Int32.MinValue, Int32.MaxValue).ToString();
-        }
-
-        private static void InvokeIfRequired(Control target, Delegate methodToInvoke)
-        {
-            /* Mit Hilfe von InvokeRequired wird geprüft ob der Aufruf direkt an die UI gehen kann oder
-             * ob ein Invokeing hier von Nöten ist
-             */
-            if (target.InvokeRequired)
-            {
-                // Das Control muss per Invoke geändert werden, weil der aufruf aus einem Backgroundthread kommt
-                target.Invoke(methodToInvoke);
-            }
-            else
-            {
-                // Die Änderung an der UI kann direkt aufgerufen werden.
-                methodToInvoke.DynamicInvoke();
-
-
-            }
-        }
-
+       
         private void BackgroundWorker1DoWork(object sender, DoWorkEventArgs e)
         {
             _dimension = Convert.ToInt32(txtDimension.Text);
@@ -182,21 +198,21 @@ namespace PNoise3D
             for (int xChunk = 0; xChunk < _dimension; xChunk += 16)
             {
 
-                InvokeIfRequired(lblxChunks, (MethodInvoker) delegate
-                                                                 {
-                                                                     lblxChunks.Text = xChunk.ToString();
-                                                                 });
+                InvokeIfRequired(lblxChunks, (MethodInvoker)delegate
+                {
+                    lblxChunks.Text = xChunk.ToString();
+                });
 
                 for (int zChunk = 0; zChunk < _dimension; zChunk += 16)
                 {
                     _overallzChunks += 16;
 
                     InvokeIfRequired(lblzChunks, (MethodInvoker)delegate
-                                                                    {
-                                                                        lblzChunks.Text = string.Format("{0}|{1}",
-                                                                                                        zChunk,
-                                                                                                        _overallzChunks);
-                                                                    });
+                    {
+                        lblzChunks.Text = string.Format("{0}|{1}",
+                                                        zChunk,
+                                                        _overallzChunks);
+                    });
 
 
                     int[,] buffer = new int[16, 16];
@@ -227,6 +243,7 @@ namespace PNoise3D
                                     using (Pen pen = new Pen(color))
                                     {
                                         gBmp.DrawLine(pen, x + xChunk, z + zChunk, x + xChunk + 1, z + zChunk);
+
                                         if (y < 65)
                                         {
                                             if (!_useCustomColor)
@@ -240,12 +257,15 @@ namespace PNoise3D
                                                     gBmp.DrawLine(pen2, x + xChunk, z + zChunk, x + xChunk + 1,
                                                                   z + zChunk);
                                             }
-
-                                            using (
+                                            else
+                                            {
+                                                using (
                                                     Pen pen2 =
                                                         new Pen(Color.FromArgb(_a, _r, _g, _b)))
-                                                gBmp.DrawLine(pen2, x + xChunk, z + zChunk, x + xChunk + 1, z + zChunk);
+                                                    gBmp.DrawLine(pen2, x + xChunk, z + zChunk, x + xChunk + 1,
+                                                                  z + zChunk);
 
+                                            }
                                         }
                                     }
                                 }
@@ -259,15 +279,64 @@ namespace PNoise3D
                 }
             }
         }
-
         private void BackgroundWorker1RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             btnSave.Enabled = true;
             btnGenerate.Enabled = true;
         }
-
         #endregion ---------------------------------------------------------------------------------------
 
+        #region Methods ----------------------------------------------------------------------------------
+
+        /// <summary>
+        /// Get Systemcolors and fill the combobox
+        /// </summary>
+        private void GetComboBoxColors()
+        {
+            var colorProperties = _colors.GetType().GetProperties(BindingFlags.Static | BindingFlags.Public);
+            var colors = colorProperties.Select(prop => (Color)prop.GetValue(null, null));
+
+            foreach (Color myColor in colors)
+            {
+                _colorList.Add(myColor);
+                cmbWatercolor.Items.Add(myColor.Name);
+            }
+        }
+
+        /// <summary>
+        /// Generate random seed and fill textbox
+        /// </summary>
+        private void SetRandomSeed()
+        {
+            _rnd = new Random();
+            txtSeed.Text = _rnd.Next(Int32.MinValue, Int32.MaxValue).ToString();
+        }
+
+        /// <summary>
+        /// Invoke if required, for thread safe gui changes
+        /// </summary>
+        /// <param name="target">Target control</param>
+        /// <param name="methodToInvoke">Delegate Method to Invoke</param>
+        private static void InvokeIfRequired(Control target, Delegate methodToInvoke)
+        {
+            /* Mit Hilfe von InvokeRequired wird geprüft ob der Aufruf direkt an die UI gehen kann oder
+             * ob ein Invokeing hier von Nöten ist
+             */
+            if (target.InvokeRequired)
+            {
+                // Das Control muss per Invoke geändert werden, weil der aufruf aus einem Backgroundthread kommt
+                target.Invoke(methodToInvoke);
+            }
+            else
+            {
+                // Die Änderung an der UI kann direkt aufgerufen werden.
+                methodToInvoke.DynamicInvoke();
+
+
+            }
+        }
+
+        #endregion ---------------------------------------------------------------------------------------
         
     }
 }

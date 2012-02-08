@@ -1,15 +1,24 @@
-﻿using System;
-using System.Collections;
+﻿#region License | GNU GPL v3
+//Perlin Noise 3D Map Generator - Generate random Perlin Noise 3D Bitmaps for further using in Game Development
+//Copyright (C) 2012  Aldo Giese
+
+//This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License 
+//as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+//This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
+//of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+//You should have received a copy of the GNU General Public License along with this program;
+//if not, see <http://www.gnu.org/licenses/>.
+#endregion
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
-
 
 namespace PNoise3D
 {
@@ -43,7 +52,7 @@ namespace PNoise3D
 
         #region Events -----------------------------------------------------------------------------------
         
-        private void btnGenerate_Click(object sender, EventArgs e)
+        private void BtnGenerateClick(object sender, EventArgs e)
         {
             SEED = Convert.ToInt32(txtSeed.Text);
 
@@ -70,18 +79,18 @@ namespace PNoise3D
             }
         }
 
-        private void btnSetRandomSeed_Click(object sender, EventArgs e)
+        private void BtnSetRandomSeedClick(object sender, EventArgs e)
         {
             SetRandomSeed();
         }
 
-        private void chkCustomColor_CheckedChanged(object sender, EventArgs e)
+        private void ChkCustomColorCheckedChanged(object sender, EventArgs e)
         {
             groupBox1.Enabled = chkCustomColor.Checked;
             useCustomColor = chkCustomColor.Checked;
         }
 
-        private void cmbWatercolor_SelectedIndexChanged(object sender, EventArgs e)
+        private void CmbWatercolorSelectedIndexChanged(object sender, EventArgs e)
         {
             txtA.Text = ColorList[cmbWatercolor.SelectedIndex].A.ToString();
             txtR.Text = ColorList[cmbWatercolor.SelectedIndex].R.ToString();

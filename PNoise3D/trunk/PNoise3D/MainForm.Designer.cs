@@ -1,4 +1,17 @@
-﻿using System.Drawing;
+﻿#region License | GNU GPL v3
+//Perlin Noise 3D Map Generator - Generate random Perlin Noise 3D Bitmaps for further using in Game Development
+//Copyright (C) 2012  Aldo Giese
+
+//This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License 
+//as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
+//This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
+//of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+//You should have received a copy of the GNU General Public License along with this program;
+//if not, see <http://www.gnu.org/licenses/>.
+#endregion
+
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace PNoise3D
@@ -82,7 +95,7 @@ namespace PNoise3D
             this.btnGenerate.TabIndex = 0;
             this.btnGenerate.Text = "Generieren";
             this.btnGenerate.UseVisualStyleBackColor = true;
-            this.btnGenerate.Click += new System.EventHandler(this.btnGenerate_Click);
+            this.btnGenerate.Click += new System.EventHandler(this.BtnGenerateClick);
             // 
             // btnCancel
             // 
@@ -122,7 +135,7 @@ namespace PNoise3D
             this.btnSetRandomSeed.TabIndex = 5;
             this.btnSetRandomSeed.Text = "Random";
             this.btnSetRandomSeed.UseVisualStyleBackColor = true;
-            this.btnSetRandomSeed.Click += new System.EventHandler(this.btnSetRandomSeed_Click);
+            this.btnSetRandomSeed.Click += new System.EventHandler(this.BtnSetRandomSeedClick);
             // 
             // label2
             // 
@@ -172,7 +185,7 @@ namespace PNoise3D
             this.cmbWatercolor.Size = new System.Drawing.Size(156, 21);
             this.cmbWatercolor.TabIndex = 10;
             this.cmbWatercolor.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cmbWatercolor_DrawItem);
-            this.cmbWatercolor.SelectedIndexChanged += new System.EventHandler(this.cmbWatercolor_SelectedIndexChanged);
+            this.cmbWatercolor.SelectedIndexChanged += new System.EventHandler(this.CmbWatercolorSelectedIndexChanged);
             // 
             // label4
             // 
@@ -295,7 +308,7 @@ namespace PNoise3D
             this.chkCustomColor.Size = new System.Drawing.Size(15, 14);
             this.chkCustomColor.TabIndex = 22;
             this.chkCustomColor.UseVisualStyleBackColor = true;
-            this.chkCustomColor.CheckedChanged += new System.EventHandler(this.chkCustomColor_CheckedChanged);
+            this.chkCustomColor.CheckedChanged += new System.EventHandler(this.ChkCustomColorCheckedChanged);
             // 
             // label11
             // 

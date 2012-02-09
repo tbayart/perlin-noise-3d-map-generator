@@ -456,6 +456,7 @@ namespace PNoise3D
             this.btnBatch.TabIndex = 34;
             this.btnBatch.Text = "Batch";
             this.btnBatch.UseVisualStyleBackColor = true;
+            this.btnBatch.Click += new System.EventHandler(this.btnBatch_Click);
             // 
             // MainForm
             // 

@@ -93,93 +93,6 @@ namespace PNoise3D
 
         #region Events -----------------------------------------------------------------------------------
 
-        private void CmbWatercolorSelectedIndexChanged(object sender, EventArgs e)
-        {
-            txtA.Text = _colorList[cmbWatercolor.SelectedIndex].A.ToString();
-            txtR.Text = _colorList[cmbWatercolor.SelectedIndex].R.ToString();
-            txtG.Text = _colorList[cmbWatercolor.SelectedIndex].G.ToString();
-            txtB.Text = _colorList[cmbWatercolor.SelectedIndex].B.ToString();
-
-        }
-        private void chkMinimalview_CheckedChanged(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.minimalView = chkMinimalview.Checked;
-            Properties.Settings.Default.Save();
-
-            Size = Properties.Settings.Default.minimalView ? new Size(185, Size.Height) : new Size(548, Size.Height);
-        }
-        private void ChkCustomColorCheckedChanged(object sender, EventArgs e)
-        {
-            groupBox1.Enabled = chkCustomColor.Checked;
-            _useCustomColor = chkCustomColor.Checked;
-        }
-
-        private void BtnSetRandomSeedClick(object sender, EventArgs e)
-        {
-            SetRandomSeed();
-        }
-        private void BtnFullscreenClick(object sender, EventArgs e)
-        {
-            if(WindowState == FormWindowState.Maximized)
-            {
-                btnFullscreen.Text = @"Fullscreen";
-                WindowState = FormWindowState.Normal;
-            }
-            else
-            {
-                btnFullscreen.Text = @"Normal Mode";
-                WindowState = FormWindowState.Maximized;
-            }
-            
-        }
-        private void BtnGenerateClick(object sender, EventArgs e)
-        {
-            _seed = Convert.ToInt32(txtSeed.Text);
-
-            if (txtDimension.TextLength <= 1 || txtHeigth.TextLength <= 1)
-                MessageBox.Show(@"Bitte die Felder mit Input füllen!!!", @"Hinweis!", MessageBoxButtons.OK,
-                                MessageBoxIcon.Information);
-            else
-            {
-                btnCancel.Enabled = true;
-
-
-                if (!_useCustomColor)
-                {
-                    if (cmbWatercolor.SelectedIndex == 0) //Wenn keine Farbe ausgewählt, zufällig eine Wählen
-                        cmbWatercolor.SelectedIndex = _rnd.Next(cmbWatercolor.Items.Count);
-                    backgroundWorker1.RunWorkerAsync(cmbWatercolor.SelectedIndex);
-
-                }
-                else
-                {
-                    _a = string.IsNullOrWhiteSpace(txtA.Text) ? Convert.ToInt32(txtA.Text) : _rnd.Next(255);
-                    _r = string.IsNullOrWhiteSpace(txtR.Text) ? Convert.ToInt32(txtR.Text) : _rnd.Next(255);
-                    _g = string.IsNullOrWhiteSpace(txtG.Text) ? Convert.ToInt32(txtG.Text) : _rnd.Next(255);
-                    _b = string.IsNullOrWhiteSpace(txtB.Text) ? Convert.ToInt32(txtB.Text) : _rnd.Next(255);
-                    backgroundWorker1.RunWorkerAsync(cmbWatercolor.SelectedIndex);
-                }
-
-                
-            }
-        }
-        private void BtnCancelClick(object sender, EventArgs e)
-        {
-            backgroundWorker1.CancelAsync();
-            Application.Exit();
-        }
-        private void BtnAboutClick(object sender, EventArgs e)
-        {
-            AboutFrm aboutForm = new AboutFrm();
-            aboutForm.ShowDialog();
-        }
-        private void BtnSaveClick(object sender, EventArgs e)
-        {
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                _bmp.Save(saveFileDialog1.FileName);
-        }
-
-       
         private void BackgroundWorker1DoWork(object sender, DoWorkEventArgs e)
         {
             _dimension = Convert.ToInt32(txtDimension.Text);
@@ -252,7 +165,7 @@ namespace PNoise3D
                                                     Pen pen2 =
                                                         new Pen(Color.FromArgb(Convert.ToInt32(txtAlpha.Text),
                                                                                Color.FromName(
-                                                                                   _colorList[(int) cmb].
+                                                                                   _colorList[(int)cmb].
                                                                                        Name))))
                                                     gBmp.DrawLine(pen2, x + xChunk, z + zChunk, x + xChunk + 1,
                                                                   z + zChunk);
@@ -283,6 +196,98 @@ namespace PNoise3D
         {
             btnSave.Enabled = true;
             btnGenerate.Enabled = true;
+        }
+
+        private void CmbWatercolorSelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtA.Text = _colorList[cmbWatercolor.SelectedIndex].A.ToString();
+            txtR.Text = _colorList[cmbWatercolor.SelectedIndex].R.ToString();
+            txtG.Text = _colorList[cmbWatercolor.SelectedIndex].G.ToString();
+            txtB.Text = _colorList[cmbWatercolor.SelectedIndex].B.ToString();
+
+        }
+        private void chkMinimalview_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.minimalView = chkMinimalview.Checked;
+            Properties.Settings.Default.Save();
+
+            Size = Properties.Settings.Default.minimalView ? new Size(185, Size.Height) : new Size(548, Size.Height);
+        }
+        private void ChkCustomColorCheckedChanged(object sender, EventArgs e)
+        {
+            groupBox1.Enabled = chkCustomColor.Checked;
+            _useCustomColor = chkCustomColor.Checked;
+        }
+
+        private void BtnSetRandomSeedClick(object sender, EventArgs e)
+        {
+            SetRandomSeed();
+        }
+        private void BtnFullscreenClick(object sender, EventArgs e)
+        {
+            if(WindowState == FormWindowState.Maximized)
+            {
+                btnFullscreen.Text = @"Fullscreen";
+                WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                btnFullscreen.Text = @"Normal Mode";
+                WindowState = FormWindowState.Maximized;
+            }
+            
+        }
+        private void BtnGenerateClick(object sender, EventArgs e)
+        {
+            _seed = Convert.ToInt32(txtSeed.Text);
+
+            if (txtDimension.TextLength <= 1 || txtHeigth.TextLength <= 1)
+                MessageBox.Show(@"Bitte die Felder mit Input füllen!!!", @"Hinweis!", MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+            else
+            {
+                btnCancel.Enabled = true;
+
+
+                if (!_useCustomColor)
+                {
+                    if (cmbWatercolor.SelectedIndex == 0) //Wenn keine Farbe ausgewählt, zufällig eine Wählen
+                        cmbWatercolor.SelectedIndex = _rnd.Next(cmbWatercolor.Items.Count);
+                    backgroundWorker1.RunWorkerAsync(cmbWatercolor.SelectedIndex);
+
+                }
+                else
+                {
+                    _a = string.IsNullOrWhiteSpace(txtA.Text) ? Convert.ToInt32(txtA.Text) : _rnd.Next(255);
+                    _r = string.IsNullOrWhiteSpace(txtR.Text) ? Convert.ToInt32(txtR.Text) : _rnd.Next(255);
+                    _g = string.IsNullOrWhiteSpace(txtG.Text) ? Convert.ToInt32(txtG.Text) : _rnd.Next(255);
+                    _b = string.IsNullOrWhiteSpace(txtB.Text) ? Convert.ToInt32(txtB.Text) : _rnd.Next(255);
+                    backgroundWorker1.RunWorkerAsync(cmbWatercolor.SelectedIndex);
+                }
+
+                
+            }
+        }
+        private void btnBatch_Click(object sender, EventArgs e)
+        {
+            ShowInTaskbar = false;
+            Visible = false;
+            new BatchProcessing().ShowDialog();
+        }
+        private void BtnCancelClick(object sender, EventArgs e)
+        {
+            backgroundWorker1.CancelAsync();
+            Application.Exit();
+        }
+        private void BtnAboutClick(object sender, EventArgs e)
+        {
+            AboutFrm aboutForm = new AboutFrm();
+            aboutForm.ShowDialog();
+        }
+        private void BtnSaveClick(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                _bmp.Save(saveFileDialog1.FileName);
         }
 
         private void txtDimension_KeyPress(object sender, KeyPressEventArgs e)
@@ -402,6 +407,8 @@ namespace PNoise3D
         }
 
         #endregion ---------------------------------------------------------------------------------------
+
+        
 
         
     }
